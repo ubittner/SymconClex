@@ -1,0 +1,96 @@
+{
+    "elements": [
+        {
+            "type": "Label",
+            "caption": "Clex, ein elektronisches Schließsystem von Uhlmann & Zacher"
+        },
+        {
+            "type": "Label",
+            "caption": " "
+        },
+        {
+            "type": "ExpansionPanel",
+            "caption": "(0) Instanzinformationen",
+            "items": [
+                {
+                    "type": "Label",
+                    "caption": "Mit dieser Instanz kann Clex, ein elektronisches Schließsystem von Uhlmann und Zacher, gesteuert werden."
+                },
+                {
+                    "type": "Label",
+                    "caption": "Weitere Informationen entnehmen Sie bitte der Dokumentation oder den Hinweisen hier in der Konfiguration."
+                },
+                {
+                    "type": "Label",
+                    "caption": " "
+                },
+                {
+                    "type": "Label",
+                    "caption": "Symcon Version:\t5.2>"
+                },
+                {
+                    "type": "Label",
+                    "caption": "Name:\t\t\tClex"
+                },
+                {
+                    "type": "Label",
+                    "caption": "Version:\t\t\t1.00-1"
+                },
+                {
+                    "type": "Label",
+                    "caption": "Datum:\t\t\t19. September 2019"
+                },
+                {
+                    "type": "Label",
+                    "caption": "Uhrzeit:\t\t\t09:00"
+                },
+                {
+                    "type": "Label",
+                    "caption": "Entwickler:\t\tNormen Thiel"
+                },
+                {
+                    "type": "Label",
+                    "caption": "Präfix:\t\t\tCLEX"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "ExpansionPanel",
+            "caption": "Aktionsbereich",
+            "items": [
+            ]
+        },
+        {
+            "type": "TestCenter"
+        }
+    ],
+    "status": [
+        {
+            "code": 101,
+            "icon": "active",
+            "caption": "Clex wird erstellt"
+        },
+        {
+            "code": 102,
+            "icon": "active",
+            "caption": "Clex ist aktiv"
+        },
+        {
+            "code": 103,
+            "icon": "active",
+            "caption": "Clex wird gelöscht"
+        },
+        {
+            "code": 104,
+            "icon": "inactive",
+            "caption": "Clex ist inaktiv"
+        },
+        {
+            "code": 200,
+            "icon": "inactive",
+            "caption": "Es ist Fehler aufgetreten, weitere Informationen unter Meldungen"
+        }
+    ]
+}
