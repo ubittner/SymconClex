@@ -1,0 +1,15 @@
+{
+    "id": "{3E1DE6B2-479F-6A65-26DE-C7EDB116AD82}",
+    "name": "Clex Funk",
+    "type": 3,
+    "vendor": "U&Z",
+    "aliases":
+    [
+        "Clex Funk"
+    ],
+    "url": "https://github.com/ubittner/SymconClex",
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "CXFUNK"
+}

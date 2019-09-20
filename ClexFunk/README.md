@@ -2,12 +2,9 @@
 
 Dies ist ein Gemeinschaftsprojekt von Normen Thiel und Ulrich Bittner.  
 
-Mit diesem Modul kann Clex, ein elektronisches Schließsystem von Uhlmann & Zacher, gesteuert werden.  
+Mit diesem Modul kann das [Clex Funkschaltmodul CX6932 von Uhlmann & Zacher](https://uundz.com) in [IP-Symcon](https://www.symcon.de/) eingebunden werden.
 
-Für dieses Modul besteht kein Anspruch auf Fehlerfreiheit, Weiterentwicklung, sonstige Unterstützung oder Support.
-Bevor das Modul installiert wird, sollte unbedingt ein Backup von IP-Symcon durchgeführt werden.
-Der Entwickler haftet nicht für eventuell auftretende Datenverluste oder sonstige Schäden.
-Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklich zu.
+Für dieses Modul besteht kein Anspruch auf Fehlerfreiheit, Weiterentwicklung, sonstige Unterstützung oder Support. Bevor das Modul installiert wird, sollte unbedingt ein Backup von IP-Symcon durchgeführt werden. Der Entwickler haftet nicht für eventuell auftretende Datenverluste oder sonstige Schäden. Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklich zu.  
 
 ### Inhaltverzeichnis
 
@@ -25,8 +22,9 @@ Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklic
 
 ### 2. Voraussetzungen
 
-- IP-Symcon ab Version 5.1
-- U&Z Plex Schließsystem
+- IP-Symcon ab Version 5.2
+- U&Z Clex Schließsystem
+- U&Z Clex Funkschaltmodul CX6932
 
 ### 3. Software-Installation
 
@@ -38,7 +36,7 @@ Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklic
 
 ### 4. Einrichten der Instanzen in IP-Symcon  
 
-An beliebiger Stelle im Objektbaum `Instanz hinzufügen` auswählen und `Clex` auswählen, welches unter dem Hersteller `U&Z` aufgeführt ist. Es wird eine Instanz angelegt, in der die Eigenschaften festgelegt werden können.
+An beliebiger Stelle im Objektbaum `Instanz hinzufügen` auswählen und `Clex Funk` auswählen, welches unter dem Hersteller `U&Z` aufgeführt ist. Es wird eine Instanz angelegt, in der die Eigenschaften festgelegt werden können.
 
 __Konfigurationsseite__:
 
@@ -73,9 +71,9 @@ Wird die Instanz gelöscht, so werden automatisch die oben aufgeführten Profile
 
 ```text
 Schließsystem ver- und entriegeln:
-CLEX_ToggleDoorLock(integer $InstanzID, boolean $Status);  
+CXFUNK_ToggleDoorLock(integer $InstanzID, boolean $Status);  
   
 Beispiele:  
-Verriegeln: CLEX_ToggleDoorLock(12345, false);   
-Entriegeln: CLEX_ToggleDoorLock(12345, true); 
+Verriegeln: CXFUNK_ToggleDoorLock(12345, false);   
+Entriegeln: CXFUNK_ToggleDoorLock(12345, true); 
 ```  

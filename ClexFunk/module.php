@@ -1,9 +1,9 @@
 <?php
 
 /*
- * @module      Clex
+ * @module      ClexFunk
  *
- * @prefix      CLEX
+ * @prefix      CXFUNK
  *
  * @file        module.php
  *
@@ -20,7 +20,7 @@
  * @guids       Library
  *              {B1512A59-D8DE-D41E-6785-8BC20470B2A4}
  *
- *              Clex
+ *              ClexFunk
  *             	{3E1DE6B2-479F-6A65-26DE-C7EDB116AD82}
  *
  */
@@ -28,7 +28,7 @@
 // Declare
 declare(strict_types=1);
 
-class Clex extends IPSModule
+class ClexFunk extends IPSModule
 {
     public function Create()
     {

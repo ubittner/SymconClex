@@ -1,15 +1,15 @@
 {
-    "id": "{3E1DE6B2-479F-6A65-26DE-C7EDB116AD82}",
-    "name": "Clex",
+    "id": "{6B36BFA3-10E1-96E2-ECE3-19AB4EC75591}",
+    "name": "Clex EMA",
     "type": 3,
     "vendor": "U&Z",
     "aliases":
     [
-        "Clex"
+        "Clex EMA"
     ],
     "url": "https://github.com/ubittner/SymconClex",
     "parentRequirements": [],
     "childRequirements": [],
     "implemented": [],
-    "prefix": "CLEX"
+    "prefix": "CXEMA"
 }

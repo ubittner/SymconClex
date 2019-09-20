@@ -1,0 +1,348 @@
+{
+	"elements": [
+		{
+			"type": "Label",
+			"caption": "Clex EMA-Modul CX6934 von Uhlmann & Zacher"
+		},
+		{
+			"type": "Label",
+			"caption": " "
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "(0) Instanzinformationen",
+			"items": [
+				{
+					"type": "Label",
+					"caption": "Mit dieser Instanz kann das Clex EMA-Modul CX6934 von Uhlmann und Zacher eingebunden werden."
+				},
+				{
+					"type": "Label",
+					"caption": "Weitere Informationen entnehmen Sie bitte der Dokumentation oder den Hinweisen hier in der Konfiguration."
+				},
+				{
+					"type": "Label",
+					"caption": " "
+				},
+				{
+					"type": "Label",
+					"caption": "Symcon Version:\t5.2>"
+				},
+				{
+					"type": "Label",
+					"caption": "Name:\t\t\tClex EMA"
+				},
+				{
+					"type": "Label",
+					"caption": "Version:\t\t\t1.00-1"
+				},
+				{
+					"type": "Label",
+					"caption": "Datum:\t\t\t19. September 2019"
+				},
+				{
+					"type": "Label",
+					"caption": "Uhrzeit:\t\t\t09:00"
+				},
+				{
+					"type": "Label",
+					"caption": "Entwickler:\t\tNormen Thiel"
+				},
+				{
+					"type": "Label",
+					"caption": "Präfix:\t\t\tCXEMA"
+				}
+			]
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "(1) Status",
+			"items": [
+				{
+					"type": "Label",
+					"caption": "(1.1) Alarmanlagenstatus"
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie die Variable für den Alarmanlagenstatus (scharf / unscharf) aus:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "AlarmSystemStatusVariable",
+					"caption": "Variable"
+				},
+				{
+					"type": "Label",
+					"caption": " "
+				},
+				{
+					"type": "Label",
+					"caption": "(1.2) Alarmstatus"
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie die Variable für den Alarmstatus (kein Alarm / Alarm ausgelöst) aus:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "AlarmStatusVariable",
+					"caption": "Variable"
+				}
+			]
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "(2) Ausgang",
+			"items": [
+				{
+					"type": "Label",
+					"caption": "(2.1) K1 Scharf-/Unscharf schalten"
+				},
+				{
+					"type": "ExpansionPanel",
+					"caption": "Info",
+					"items": [
+						{
+							"type": "Label",
+							"caption": "Klemme 03 + 04"
+						},
+						{
+							"type": "Label",
+							"caption": "Dieser Ausgang kontrolliert die EMA."
+						},
+						{
+							"type": "Label",
+							"caption": "Wenn sich der Status der EMA ändern soll, dann schließt K1 für zwei Sekunden."
+						},
+						{
+							"type": "Label",
+							"caption": "Damit ist es möglich, den Status der EMA, von mehreren Stationen durch einen Impuls zu ändern."
+						},
+						{
+							"type": "Label",
+							"caption": "Es wird eine Kontaktschnittstelle (z.B. HmIP-SCI) benötigt."
+						}
+					]
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie aus, ob dieser Ausgang verwendet werden soll:"
+				},
+				{
+					"type": "CheckBox",
+					"name": "UseOutputToggle",
+					"caption": "Ausgang verwenden"
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie die Ausgangsvariable der Kontaktschnittstelle aus:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "OutputToggleSourceVariable",
+					"caption": "Ausgangsvariable"
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie die Zielvariable aus, um die Alarmanlage zu schalten:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "OutputToggleTargetVariable",
+					"caption": "Zielvariable"
+				}
+			]
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "(3) Eingänge",
+			"items": [
+				{
+					"type": "Label",
+					"caption": "(3.1) Rückmeldung"
+				},
+				{
+					"type": "ExpansionPanel",
+					"caption": "Info",
+					"items": [
+						{
+							"type": "Label",
+							"caption": "Klemme 09 + 10, Schließerkontakt"
+						},
+						{
+							"type": "Label",
+							"caption": "Durch diesen Eingang wird dem EMA-Modul der aktuelle Status der EMA mitgeteilt."
+						},
+						{
+							"type": "Label",
+							"caption": "Eine Spannung >5V signalisiert, dass die EMA scharf geschalten ist."
+						},
+						{
+							"type": "Label",
+							"caption": "Kleinere Spannungen signalisieren, dass die EMA unscharf geschalten ist."
+						},
+						{
+							"type": "Label",
+							"caption": "Es wird eine Schaltplatine (z.B. HmIP-PBCS) benötigt."
+						}
+					]
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie aus, ob dieser Eingang verwendet werden soll:"
+				},
+				{
+					"type": "CheckBox",
+					"name": "UseInputFeedback",
+					"caption": "Eingang verwenden"
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie die Zielvariable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "InputFeedbackTargetVariable",
+					"caption": "Zielvariable"
+				},
+				{
+					"type": "Label",
+					"caption": " "
+				},
+				{
+					"type": "Label",
+					"caption": "(3.2) Freigabe Scharfschaltbereitschaft"
+				},
+				{
+					"type": "ExpansionPanel",
+					"caption": "Info",
+					"items": [
+						{
+							"type": "Label",
+							"caption": "Klemme 11 + 12, Öffnerkontakt"
+						},
+						{
+							"type": "Label",
+							"caption": "Ist der Eingang spannungslos, dann ist es möglich die EMA scharf zu schalten."
+						},
+						{
+							"type": "Label",
+							"caption": "An diesen Eingang kann z.B. ein Riegelkontakt angeschlossen werden, um sicherzustellen, dass die EMA nur scharf geschalten werden kann, wenn die Tür abgeschlossen ist."
+						},
+						{
+							"type": "Label",
+							"caption": "Der RK sollte dafür mit der Freigabe der EMA in Reihe geschalten sein."
+						},
+						{
+							"type": "Label",
+							"caption": "Es wird eine Schaltplatine (z.B. HmIP-PBCS) benötigt."
+						}
+					]
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie aus, ob dieser Eingang verwendet werden soll:"
+				},
+				{
+					"type": "CheckBox",
+					"name": "UseInputRelease",
+					"caption": "Eingang verwenden"
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie die Zielvariable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "InputReleaseTargetVariable",
+					"caption": "Zielvariable"
+				},
+				{
+					"type": "Label",
+					"caption": " "
+				},
+				{
+					"type": "Label",
+					"caption": "(3.3) Alarm"
+				},
+				{
+					"type": "ExpansionPanel",
+					"caption": "Info",
+					"items": [
+						{
+							"type": "Label",
+							"caption": "Klemme 13 + 14 Schließerkontakt"
+						},
+						{
+							"type": "Label",
+							"caption": "Eine Spannung >5V signalisiert, dass kein Alarm ausgelöst wurde."
+						},
+						{
+							"type": "Label",
+							"caption": "Liegt keine Spannung an und das Knaufmodul schaltet die EMA von scharf auf unscharf, dann wird am Knaufmodul eine entsprechende Alarmierung ausgegeben."
+						},
+						{
+							"type": "Label",
+							"caption": "Es wird eine Schaltplatine (z.B. HmIP-PBCS) benötigt."
+						}
+					]
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie aus, ob dieser Eingang verwendet werden soll:"
+				},
+				{
+					"type": "CheckBox",
+					"name": "UseInputAlarm",
+					"caption": "Eingang verwenden"
+				},
+				{
+					"type": "Label",
+					"caption": "Bitte wählen Sie die Zielvariable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "InputAlarmTargetVariable",
+					"caption": "Zielvariable"
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "ExpansionPanel",
+			"caption": "Aktionsbereich",
+			"items": []
+		},
+		{
+			"type": "TestCenter"
+		}
+	],
+	"status": [
+		{
+			"code": 101,
+			"icon": "active",
+			"caption": "Clex EMA wird erstellt"
+		},
+		{
+			"code": 102,
+			"icon": "active",
+			"caption": "Clex EMA ist aktiv"
+		},
+		{
+			"code": 103,
+			"icon": "active",
+			"caption": "Clex EMA wird gelöscht"
+		},
+		{
+			"code": 104,
+			"icon": "inactive",
+			"caption": "Clex EMA ist inaktiv"
+		},
+		{
+			"code": 200,
+			"icon": "inactive",
+			"caption": "Es ist Fehler aufgetreten, weitere Informationen unter Meldungen"
+		}
+	]
+}

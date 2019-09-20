@@ -2,7 +2,7 @@
     "elements": [
         {
             "type": "Label",
-            "caption": "Clex, ein elektronisches Schließsystem von Uhlmann & Zacher"
+            "caption": "Clex Funkschaltmodul CX6932 von Uhlmann & Zacher"
         },
         {
             "type": "Label",
@@ -14,7 +14,7 @@
             "items": [
                 {
                     "type": "Label",
-                    "caption": "Mit dieser Instanz kann Clex, ein elektronisches Schließsystem von Uhlmann und Zacher, gesteuert werden."
+                    "caption": "Mit dieser Instanz kann das Clex Funkschaltmodul CX6932 von Uhlmann & Zacher gesteuert werden."
                 },
                 {
                     "type": "Label",
@@ -30,7 +30,7 @@
                 },
                 {
                     "type": "Label",
-                    "caption": "Name:\t\t\tClex"
+                    "caption": "Name:\t\t\tClex Funk"
                 },
                 {
                     "type": "Label",
@@ -50,7 +50,7 @@
                 },
                 {
                     "type": "Label",
-                    "caption": "Präfix:\t\t\tCLEX"
+                    "caption": "Präfix:\t\t\tCXFUNK"
                 }
             ]
         }
@@ -70,22 +70,22 @@
         {
             "code": 101,
             "icon": "active",
-            "caption": "Clex wird erstellt"
+            "caption": "Clex Funk wird erstellt"
         },
         {
             "code": 102,
             "icon": "active",
-            "caption": "Clex ist aktiv"
+            "caption": "Clex Funk ist aktiv"
         },
         {
             "code": 103,
             "icon": "active",
-            "caption": "Clex wird gelöscht"
+            "caption": "Clex Funk wird gelöscht"
         },
         {
             "code": 104,
             "icon": "inactive",
-            "caption": "Clex ist inaktiv"
+            "caption": "Clex Funk ist inaktiv"
         },
         {
             "code": 200,
