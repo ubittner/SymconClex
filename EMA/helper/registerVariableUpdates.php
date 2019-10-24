@@ -56,5 +56,4 @@ trait CXEMA_registerVariableUpdates
     {
         print_r($this->GetMessageList());
     }
-
 }

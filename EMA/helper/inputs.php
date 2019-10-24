@@ -46,7 +46,4 @@ trait CXEMA_inputs
             }
         }
     }
-
-
-
 }
