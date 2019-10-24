@@ -30,22 +30,27 @@ trait CXEMA_registerVariableUpdates
         // Unregister all variable updates first
         $this->UnregisterVariableUpdates();
         // Register variable updates
-        // Alarm system status
-        $alarmSystemStatus = $this->ReadPropertyInteger('Input_Feedback_SourceVariable');
-        if ($alarmSystemStatus != 0 && IPS_ObjectExists($alarmSystemStatus)) {
-            $this->RegisterMessage($alarmSystemStatus, VM_UPDATE);
-        }
-        // Alarm status
-        $alarmStatus = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
-        if ($alarmStatus != 0 && IPS_ObjectExists($alarmStatus)) {
-            $this->RegisterMessage($alarmStatus, VM_UPDATE);
-        }
         // Output
         if ($this->ReadPropertyBoolean('UseOutput')) {
-            $outputControlEMA = $this->ReadPropertyInteger('Output_SourceVariable');
-            if ($outputControlEMA != 0 && IPS_ObjectExists($outputControlEMA)) {
-                $this->RegisterMessage($outputControlEMA, VM_UPDATE);
+            $outputSourceVariable = $this->ReadPropertyInteger('Output_SourceVariable');
+            if ($outputSourceVariable != 0 && IPS_ObjectExists($outputSourceVariable)) {
+                $this->RegisterMessage($outputSourceVariable, VM_UPDATE);
             }
+        }
+        // Input Feedback, EMA status
+        $sourceVariable = $this->ReadPropertyInteger('Input_Feedback_SourceVariable');
+        if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
+            $this->RegisterMessage($sourceVariable, VM_UPDATE);
+        }
+        // Input Release, bolt contact
+        $sourceVariable = $this->ReadPropertyInteger('Input_Release_SourceVariable');
+        if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
+            $this->RegisterMessage($sourceVariable, VM_UPDATE);
+        }
+        // Input Alarm, EMA alarm status
+        $sourceVariable = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
+        if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
+            $this->RegisterMessage($sourceVariable, VM_UPDATE);
         }
     }
 
