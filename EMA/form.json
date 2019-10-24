@@ -72,11 +72,23 @@
 						},
 						{
 							"type": "Label",
-							"caption": "Dieser Ausgang kontrolliert die EMA."
+							"caption": "Dieser Ausgang kontrolliert die EMA. Das Verhalten hängt von der Togglefunktion ab. Diese Funktion kann mit dem Service Gerät eingestellt werden."
 						},
 						{
 							"type": "Label",
-							"caption": "Wenn sich der Status der EMA ändern soll, dann schließt K1 für zwei Sekunden im Impuls-Modus."
+							"caption": "Immer toggeln ein:"
+						},
+						{
+							"type": "Label",
+							"caption": "Wenn K1 geschlossen ist wird die EMA unscharf geschaltet. Wenn K1 offen ist, dann wird die EMA scharf geschaltet."
+						},
+						{
+							"type": "Label",
+							"caption": "Immer toggeln aus (Impulsmodus):"
+						},
+						{
+							"type": "Label",
+							"caption": "Wenn sich der Status der EMA ändern soll, dann schließt K1 für zwei Sekunden."
 						},
 						{
 							"type": "Label",
@@ -94,17 +106,26 @@
 				},
 				{
 					"type": "CheckBox",
-					"name": "UseOutputControlEMA",
+					"name": "UseOutput",
 					"caption": "Ausgang verwenden"
 				},
 				{
 					"type": "Label",
-					"caption": "\nBitte wählen Sie die Variable der Kontaktschnittstelle aus:"
+					"caption": "\nBitte wählen Sie die Variable (Kontaktschnittstelle) als Auslöser aus:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "OutputControlEMA",
+					"name": "Output_SourceVariable",
 					"caption": "Quellvariable"
+				},
+				{
+					"type": "Label",
+					"caption": "\nBitte wählen Sie aus, ob der Impulsmodus verwendet werden soll:"
+				},
+				{
+					"type": "CheckBox",
+					"name": "UseImpulseMode",
+					"caption": "Impulsmodus verwenden"
 				},
 				{
 					"type": "Label",
@@ -112,7 +133,7 @@
 				},
 				{
 					"type": "SelectVariable",
-					"name": "AlarmSystem",
+					"name": "Output_TargetVariable",
 					"caption": "Zielvariable"
 				}
 			]
@@ -158,20 +179,20 @@
 				},
 				{
 					"type": "Label",
-					"caption": "\nBitte wählen Sie die Variable für den EMA Status (Unscharf / Scharf) aus:"
+					"caption": "\nBitte wählen Sie die Variable für den EMA Status (Unscharf / Scharf) als Auslöser aus:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "AlarmSystemStatus",
+					"name": "Input_Feedback_SourceVariable",
 					"caption": "Quellvariable"
 				},
 				{
 					"type": "Label",
-					"caption": "\nBitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+					"caption": "\nBitte wählen Sie die Variable (Schaltaktor) aus, um diesen Eingang des EMA-Moduls zu schalten:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "InputFeedback",
+					"name": "Input_Feedback_TargetVariable",
 					"caption": "Zielvariable"
 				}
 			]
@@ -217,20 +238,20 @@
 				},
 				{
 					"type": "Label",
-					"caption": "\nBitte wählen Sie die Variable für den Riegelkontakt Status aus:"
+					"caption": "\nBitte wählen Sie die Variable für den Riegelkontakt als Auslöser aus:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "BoltContactStatus",
+					"name": "Input_Release_SourceVariable",
 					"caption": "Quellvariable"
 				},
 				{
 					"type": "Label",
-					"caption": "\nBitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+					"caption": "\nBitte wählen Sie die Variable (Schaltaktor) aus, um diesen Eingang des EMA-Moduls zu schalten:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "InputRelease",
+					"name": "Input_Release_TargetVariable",
 					"caption": "Zielvariable"
 				}
 			]
@@ -272,20 +293,20 @@
 				},
 				{
 					"type": "Label",
-					"caption": "\nBitte wählen Sie die Variable für den Alarmstatus (Kein Alarm / Alarm ausgelöst) aus:"
+					"caption": "\nBitte wählen Sie die Variable für den Alarmstatus (Kein Alarm / Alarm ausgelöst) als Auslöser aus:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "AlarmStatus",
+					"name": "Input_Alarm_SourceVariable",
 					"caption": "Quellvariable"
 				},
 				{
 					"type": "Label",
-					"caption": "\nBitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+					"caption": "\nBitte wählen Sie die Variable (Schaltaktor) aus, um diesen Eingang des EMA-Moduls zu schalten:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "InputAlarm",
+					"name": "Input_Alarm_TargetVariable",
 					"caption": "Zielvariable"
 				}
 			]

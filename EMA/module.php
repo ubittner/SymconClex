@@ -47,32 +47,25 @@ class ClexEMA extends IPSModule
         //#################### Register properties
 
         // Output
-        $this->RegisterPropertyBoolean('UseOutputControlEMA', false);
-        $this->RegisterPropertyInteger('OutputControlEMA', 0);
-        $this->RegisterPropertyInteger('AlarmSystem', 0);
+        $this->RegisterPropertyBoolean('UseOutput', false);
+        $this->RegisterPropertyInteger('Output_SourceVariable', 0);
+        $this->RegisterPropertyBoolean('UseImpulseMode', false);
+        $this->RegisterPropertyInteger('Output_TargetVariable', 0);
 
         // Input Feedback
         $this->RegisterPropertyBoolean('UseInputFeedback', false);
-        $this->RegisterPropertyInteger('AlarmSystemStatus', 0);
-        $this->RegisterPropertyInteger('InputFeedback', 0);
+        $this->RegisterPropertyInteger('Input_Feedback_SourceVariable', 0);
+        $this->RegisterPropertyInteger('Input_Feedback_TargetVariable', 0);
 
         // Input Release
         $this->RegisterPropertyBoolean('UseInputRelease', false);
-        $this->RegisterPropertyInteger('BoltContactStatus', 0);
-        $this->RegisterPropertyInteger('InputRelease', 0);
+        $this->RegisterPropertyInteger('Input_Release_SourceVariable', 0);
+        $this->RegisterPropertyInteger('Input_Release_TargetVariable', 0);
 
         // Input Alarm
         $this->RegisterPropertyBoolean('UseInputAlarm', false);
-        $this->RegisterPropertyInteger('AlarmStatus', 0);
-        $this->RegisterPropertyInteger('InputAlarm', 0);
-
-        //#################### Register profiles
-
-        //#################### Register timer
-
-        //#################### Register attributes
-
-        //#################### Register buffer
+        $this->RegisterPropertyInteger('Input_Alarm_SourceVariable', 0);
+        $this->RegisterPropertyInteger('Input_Alarm_TargetVariable', 0);
     }
 
     public function ApplyChanges()
@@ -87,6 +80,11 @@ class ClexEMA extends IPSModule
         if (IPS_GetKernelRunlevel() != KR_READY) {
             return;
         }
+
+        // Check actual states
+        $this->ToggleInputFeedback();
+        $this->ToggleInputRelease();
+        $this->ToggleInputAlarm();
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
@@ -98,21 +96,27 @@ class ClexEMA extends IPSModule
                 $this->KernelReady();
                 break;
             case VM_UPDATE:
-                // EMA
-                $alarmSystemStatus = $this->ReadPropertyInteger('AlarmSystemStatus');
-                $alarmStatus = $this->ReadPropertyInteger('AlarmStatus');
                 // Output
-                $OutputControlEMA = $this->ReadPropertyInteger('OutputControlEMA');
+                $output = $this->ReadPropertyInteger('Output_SourceVariable');
+                // Input
+                $inputFeedback = $this->ReadPropertyInteger('Input_Feedback_SourceVariable');
+                $inputRelease = $this->ReadPropertyInteger('Input_Release_SourceVariable');
+                $inputAlarm = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
                 switch ($SenderID) {
-                    case $OutputControlEMA:
+                    // Output
+                    case $output:
                         $this->ToggleEMA();
                         break;
-                    case $alarmSystemStatus:
-                        // Input Feedback
+                    // Input Feedback
+                    case $inputFeedback:
                         $this->ToggleInputFeedback();
                         break;
-                    case $alarmStatus:
-                        // Input Alarm
+                    // Input Release
+                    case $inputRelease:
+                        $this->ToggleInputRelease();
+                        break;
+                    // Input Alarm
+                    case $inputAlarm:
                         $this->ToggleInputAlarm();
                         break;
 
@@ -124,24 +128,5 @@ class ClexEMA extends IPSModule
     protected function KernelReady()
     {
         $this->ApplyChanges();
-    }
-
-    public function Destroy()
-    {
-        // Never delete this line!
-        parent::Destroy();
-
-        // Delete profiles
-    }
-
-    //#################### Request Action
-
-    public function RequestAction($Ident, $Value)
-    {
-        switch ($Ident) {
-            case 'NoName':
-                $this->DoThis($Value);
-                break;
-        }
     }
 }

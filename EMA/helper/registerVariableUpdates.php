@@ -31,18 +31,18 @@ trait CXEMA_registerVariableUpdates
         $this->UnregisterVariableUpdates();
         // Register variable updates
         // Alarm system status
-        $alarmSystemStatus = $this->ReadPropertyInteger('AlarmSystemStatus');
+        $alarmSystemStatus = $this->ReadPropertyInteger('Input_Feedback_SourceVariable');
         if ($alarmSystemStatus != 0 && IPS_ObjectExists($alarmSystemStatus)) {
             $this->RegisterMessage($alarmSystemStatus, VM_UPDATE);
         }
         // Alarm status
-        $alarmStatus = $this->ReadPropertyInteger('AlarmStatus');
+        $alarmStatus = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
         if ($alarmStatus != 0 && IPS_ObjectExists($alarmStatus)) {
             $this->RegisterMessage($alarmStatus, VM_UPDATE);
         }
         // Output
-        if ($this->ReadPropertyBoolean('UseOutputControlEMA')) {
-            $outputControlEMA = $this->ReadPropertyInteger('OutputControlEMA');
+        if ($this->ReadPropertyBoolean('UseOutput')) {
+            $outputControlEMA = $this->ReadPropertyInteger('Output_SourceVariable');
             if ($outputControlEMA != 0 && IPS_ObjectExists($outputControlEMA)) {
                 $this->RegisterMessage($outputControlEMA, VM_UPDATE);
             }
