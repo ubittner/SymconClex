@@ -5,7 +5,8 @@
 [![Version](https://img.shields.io/badge/Module_Version-1.00-blue.svg)]()
 [![Version](https://img.shields.io/badge/Module_Build-1-blue.svg)]()
 [![Version](https://img.shields.io/badge/Code-PHP-blue.svg)]()
-[![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)  
+[![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![Check Style](https://github.com/ubittner/SymconClex/workflows/Check%20Style/badge.svg)](https://github.com/ubittner/SymconClex/actions)  
 
 Dies ist ein Gemeinschaftsprojekt von Normen Thiel und Ulrich Bittner.  
 

@@ -64,28 +64,24 @@
 		},
 		{
 			"type": "ExpansionPanel",
-			"caption": "(1) Status",
+			"caption": "(1) EMA",
 			"items": [
 				{
 					"type": "Label",
-					"caption": "(1.1) Alarmanlagenstatus"
+					"caption": "(1.1) EMA Steuerung"
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie die Variable für den Alarmanlagenstatus (Unscharf / Scharf) aus:"
+					"caption": "Bitte wählen Sie die Variable für die EMA Steuerung (Unscharf / Scharf) aus:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "AlarmSystemStatusVariable",
+					"name": "AlarmSystem",
 					"caption": "Variable"
 				},
 				{
 					"type": "Label",
-					"caption": " "
-				},
-				{
-					"type": "Label",
-					"caption": "(1.2) Alarmstatus"
+					"caption": "\n(1.2) Alarmstatus"
 				},
 				{
 					"type": "Label",
@@ -93,7 +89,7 @@
 				},
 				{
 					"type": "SelectVariable",
-					"name": "AlarmStatusVariable",
+					"name": "AlarmStatus",
 					"caption": "Variable"
 				}
 			]
@@ -112,7 +108,7 @@
 					"items": [
 						{
 							"type": "Label",
-							"caption": "Klemme 03 + 04"
+							"caption": "Klemme 03 + 04 (Impuls-Modus)"
 						},
 						{
 							"type": "Label",
@@ -124,7 +120,7 @@
 						},
 						{
 							"type": "Label",
-							"caption": "Damit ist es möglich, den Status der EMA, von mehreren Stationen durch einen Impuls zu ändern."
+							"caption": "Damit ist es möglich, den Status der EMA , von mehreren Stationen durch einen Impuls zu ändern."
 						},
 						{
 							"type": "Label",
@@ -138,26 +134,17 @@
 				},
 				{
 					"type": "CheckBox",
-					"name": "UseOutputToggle",
+					"name": "UseOutputControlEMA",
 					"caption": "Ausgang verwenden"
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie die Ausgangsvariable der Kontaktschnittstelle aus:"
+					"caption": "Bitte wählen Sie die Variable der Kontaktschnittstelle aus:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "OutputToggleSourceVariable",
-					"caption": "Ausgangsvariable"
-				},
-				{
-					"type": "Label",
-					"caption": "Bitte wählen Sie die Zielvariable aus, um die Alarmanlage zu schalten:"
-				},
-				{
-					"type": "SelectVariable",
-					"name": "OutputToggleTargetVariable",
-					"caption": "Zielvariable"
+					"name": "OutputControlEMA",
+					"caption": "Variable"
 				}
 			]
 		},
@@ -206,12 +193,12 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie die Zielvariable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+					"caption": "Bitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "InputFeedbackTargetVariable",
-					"caption": "Zielvariable"
+					"name": "InputFeedback",
+					"caption": "Variable"
 				},
 				{
 					"type": "Label",
@@ -239,7 +226,7 @@
 						},
 						{
 							"type": "Label",
-							"caption": "Der RK sollte dafür mit der Freigabe der EMA in Reihe geschalten sein."
+							"caption": "Der Riegelkontakt sollte dafür mit der Freigabe der EMA in Reihe geschalten sein."
 						},
 						{
 							"type": "Label",
@@ -258,12 +245,12 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie die Zielvariable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+					"caption": "Bitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "InputReleaseTargetVariable",
-					"caption": "Zielvariable"
+					"name": "InputRelease",
+					"caption": "Variable"
 				},
 				{
 					"type": "Label",
@@ -306,12 +293,12 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie die Zielvariable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+					"caption": "Bitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
 				},
 				{
 					"type": "SelectVariable",
-					"name": "InputAlarmTargetVariable",
-					"caption": "Zielvariable"
+					"name": "InputAlarm",
+					"caption": "Variable"
 				}
 			]
 		}

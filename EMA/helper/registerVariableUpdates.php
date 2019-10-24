@@ -31,20 +31,20 @@ trait CXEMA_registerVariableUpdates
         $this->UnregisterVariableUpdates();
         // Register variable updates
         // Alarm system status
-        $alarmSystemStatus = $this->ReadPropertyInteger('AlarmSystemStatusVariable');
+        $alarmSystemStatus = $this->ReadPropertyInteger('AlarmSystemStatus');
         if ($alarmSystemStatus != 0 && IPS_ObjectExists($alarmSystemStatus)) {
             $this->RegisterMessage($alarmSystemStatus, VM_UPDATE);
         }
         // Alarm status
-        $alarmStatus = $this->ReadPropertyInteger('AlarmStatusVariable');
+        $alarmStatus = $this->ReadPropertyInteger('AlarmStatus');
         if ($alarmStatus != 0 && IPS_ObjectExists($alarmStatus)) {
             $this->RegisterMessage($alarmStatus, VM_UPDATE);
         }
-        // Output toggle
-        if ($this->ReadPropertyBoolean('UseOutputToggle')) {
-            $outputToggle = $this->ReadPropertyInteger('OutputToggleSourceVariable');
-            if ($outputToggle != 0 && IPS_ObjectExists($outputToggle)) {
-                $this->RegisterMessage($outputToggle, VM_UPDATE);
+        // Output
+        if ($this->ReadPropertyBoolean('UseOutputControlEMA')) {
+            $outputControlEMA = $this->ReadPropertyInteger('OutputControlEMA');
+            if ($outputControlEMA != 0 && IPS_ObjectExists($outputControlEMA)) {
+                $this->RegisterMessage($outputControlEMA, VM_UPDATE);
             }
         }
     }

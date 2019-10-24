@@ -1,4 +1,4 @@
-# Clex  
+# Clex Funk  
 
 Dies ist ein Gemeinschaftsprojekt von Normen Thiel und Ulrich Bittner.  
 

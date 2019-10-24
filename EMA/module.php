@@ -35,6 +35,8 @@ include_once __DIR__ . '/helper/autoload.php';
 class ClexEMA extends IPSModule
 {
     // Helper
+    use CXEMA_inputs;
+    use CXEMA_output;
     use CXEMA_registerVariableUpdates;
 
     public function Create()
@@ -44,21 +46,25 @@ class ClexEMA extends IPSModule
 
         //#################### Register properties
 
-        $this->RegisterPropertyInteger('AlarmSystemStatusVariable', 0);
-        $this->RegisterPropertyInteger('AlarmStatusVariable', 0);
+        // Status of alarm system and alarm
+        $this->RegisterPropertyInteger('AlarmSystemStatus', 0);
+        $this->RegisterPropertyInteger('AlarmStatus', 0);
 
-        $this->RegisterPropertyBoolean('UseOutputToggle', false);
-        $this->RegisterPropertyInteger('OutputToggleSourceVariable', 0);
-        $this->RegisterPropertyInteger('OutputToggleTargetVariable', 0);
+        // Output, toggles the alarm system
+        $this->RegisterPropertyBoolean('UseOutputControlEMA', false);
+        $this->RegisterPropertyInteger('OutputControlEMA', 0);
 
+        // Input feedback, status of the alarm system for alarm system module
         $this->RegisterPropertyBoolean('UseInputFeedback', false);
-        $this->RegisterPropertyInteger('InputFeedbackTargetVariable', 0);
+        $this->RegisterPropertyInteger('InputFeedback', 0);
 
+        // Input release, release to toggle the alarm system
         $this->RegisterPropertyBoolean('UseInputRelease', false);
-        $this->RegisterPropertyInteger('InputReleaseTargetVariable', 0);
+        $this->RegisterPropertyInteger('InputRelease', 0);
 
+        // Input alarm, trigger for alarm signaling at door lock
         $this->RegisterPropertyBoolean('UseInputAlarm', false);
-        $this->RegisterPropertyInteger('InputAlarmTargetVariable', 0);
+        $this->RegisterPropertyInteger('InputAlarm', 0);
 
         //#################### Register profiles
 
@@ -92,7 +98,25 @@ class ClexEMA extends IPSModule
                 $this->KernelReady();
                 break;
             case VM_UPDATE:
-                // Execute method....
+                // EMA
+                $alarmSystemStatus = $this->ReadPropertyInteger('AlarmSystemStatus');
+                $alarmStatus = $this->ReadPropertyInteger('AlarmStatus');
+                // Output
+                $OutputControlEMA = $this->ReadPropertyInteger('OutputControlEMA');
+                switch ($SenderID) {
+                    case $OutputControlEMA:
+                        $this->ToggleEMA();
+                        break;
+                    case $alarmSystemStatus:
+                        // Input Feedback
+                        $this->ToggleInputFeedback();
+                        break;
+                    case $alarmStatus:
+                        // Input Alarm
+                        $this->ToggleInputAlarm();
+                        break;
+
+                }
                 break;
         }
     }
