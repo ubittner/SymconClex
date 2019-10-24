@@ -1,13 +1,14 @@
 <?php
 
 /*
- * @module      ClexFunk
+ * @module      Clex Funk
  *
  * @prefix      CXFUNK
  *
  * @file        module.php
  *
- * @author      Normen Thiel
+ * @project     Norment Thiel & Ulrich Bittner
+ * @author      Ulrich Bittner
  * @copyright   (c) 2019
  * @license    	CC BY-NC-SA 4.0
  *              https://creativecommons.org/licenses/by-nc-sa/4.0/
@@ -20,7 +21,7 @@
  * @guids       Library
  *              {B1512A59-D8DE-D41E-6785-8BC20470B2A4}
  *
- *              ClexFunk
+ *              Clex Funk
  *             	{3E1DE6B2-479F-6A65-26DE-C7EDB116AD82}
  *
  */

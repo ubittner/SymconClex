@@ -1,5 +1,7 @@
 # Clex  
 
+[![Image](imgs/uhlmannzacher_logo.png)](https://uundz.com)  
+
 [![Version](https://img.shields.io/badge/Symcon_Version-5.2>-red.svg)](https://www.symcon.de)
 [![Version](https://img.shields.io/badge/Module_Version-1.00-blue.svg)]()
 [![Version](https://img.shields.io/badge/Module_Build-1-blue.svg)]()
@@ -10,10 +12,10 @@ Dies ist ein Gemeinschaftsprojekt von Normen Thiel und Ulrich Bittner.
 
 Folgende Module beinhaltet das Clex Repository (in alphabetischer Reihenfolge):  
 
-- __Clex EMA__ ([Dokumentation](ClexEMA))  
-	Mit diesem Modul kann das [Clex EMA-Modul CX6934 von Uhlmann und Zacher](https://uundz.com/systeme/komponenten/ema-modul.html)  in [IP-Symcon](https://www.symcon.de/) eingebunden werden.
+- __Clex EMA__ ([Dokumentation](Clex EMA))  
+	Mit diesem Modul kann das [Clex EMA-Modul CX6934 von Uhlmann und Zacher](https://uundz.com/systeme/komponenten/ema-modul.html) in [IP-Symcon](https://www.symcon.de/) eingebunden werden.
 	
-- __Clex Funk__ ([Dokumentation](ClexFunk))  
+- __Clex Funk__ ([Dokumentation](Clex Funk))  
 	Mit diesem Modul kann das [Clex Funkschaltmodul CX6932 von Uhlmann & Zacher](https://uundz.com) in [IP-Symcon](https://www.symcon.de/) eingebunden werden.
 
 

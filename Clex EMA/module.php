@@ -1,13 +1,14 @@
 <?php
 
 /*
- * @module      ClexEMA
+ * @module      Clex EMA
  *
  * @prefix      CXEMA
  *
  * @file        module.php
  *
- * @author      Normen Thiel
+ * @project     Normen Thiel & Ulrich Bittner
+ * @author      Ulrich Bittner
  * @copyright   (c) 2019
  * @license    	CC BY-NC-SA 4.0
  *              https://creativecommons.org/licenses/by-nc-sa/4.0/
@@ -20,7 +21,7 @@
  * @guids       Library
  *              {B1512A59-D8DE-D41E-6785-8BC20470B2A4}
  *
- *              ClexEMA
+ *              Clex EMA
  *             	{6B36BFA3-10E1-96E2-ECE3-19AB4EC75591}
  *
  */
@@ -28,14 +29,36 @@
 // Declare
 declare(strict_types=1);
 
+// Include
+include_once __DIR__ . '/helper/autoload.php';
+
 class ClexEMA extends IPSModule
 {
+    // Helper
+    use CXEMA_registerVariableUpdates;
+
     public function Create()
     {
         // Never delete this line!
         parent::Create();
 
         //#################### Register properties
+
+        $this->RegisterPropertyInteger('AlarmSystemStatusVariable', 0);
+        $this->RegisterPropertyInteger('AlarmStatusVariable', 0);
+
+        $this->RegisterPropertyBoolean('UseOutputToggle', false);
+        $this->RegisterPropertyInteger('OutputToggleSourceVariable', 0);
+        $this->RegisterPropertyInteger('OutputToggleTargetVariable', 0);
+
+        $this->RegisterPropertyBoolean('UseInputFeedback', false);
+        $this->RegisterPropertyInteger('InputFeedbackTargetVariable', 0);
+
+        $this->RegisterPropertyBoolean('UseInputRelease', false);
+        $this->RegisterPropertyInteger('InputReleaseTargetVariable', 0);
+
+        $this->RegisterPropertyBoolean('UseInputAlarm', false);
+        $this->RegisterPropertyInteger('InputAlarmTargetVariable', 0);
 
         //#################### Register profiles
 
