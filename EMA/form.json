@@ -26,11 +26,7 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Weitere Informationen entnehmen Sie bitte der Dokumentation."
-				},
-				{
-					"type": "Label",
-					"caption": " "
+					"caption": "Weitere Informationen entnehmen Sie bitte der Dokumentation.\n\n"
 				},
 				{
 					"type": "Label",
@@ -64,51 +60,15 @@
 		},
 		{
 			"type": "ExpansionPanel",
-			"caption": "(1) EMA",
+			"caption": "(1) Ausgang - K1 Unscharf-/Scharf schalten",
 			"items": [
-				{
-					"type": "Label",
-					"caption": "(1.1) EMA Steuerung"
-				},
-				{
-					"type": "Label",
-					"caption": "Bitte wählen Sie die Variable für die EMA Steuerung (Unscharf / Scharf) aus:"
-				},
-				{
-					"type": "SelectVariable",
-					"name": "AlarmSystem",
-					"caption": "Variable"
-				},
-				{
-					"type": "Label",
-					"caption": "\n(1.2) Alarmstatus"
-				},
-				{
-					"type": "Label",
-					"caption": "Bitte wählen Sie die Variable für den Alarmstatus (Kein Alarm / Alarm ausgelöst) aus:"
-				},
-				{
-					"type": "SelectVariable",
-					"name": "AlarmStatus",
-					"caption": "Variable"
-				}
-			]
-		},
-		{
-			"type": "ExpansionPanel",
-			"caption": "(2) Ausgang",
-			"items": [
-				{
-					"type": "Label",
-					"caption": "(2.1) K1 Unscharf-/Scharf schalten"
-				},
 				{
 					"type": "ExpansionPanel",
 					"caption": "Info",
 					"items": [
 						{
 							"type": "Label",
-							"caption": "Klemme 03 + 04 (Impuls-Modus)"
+							"caption": "Klemme 03 + 04"
 						},
 						{
 							"type": "Label",
@@ -116,7 +76,7 @@
 						},
 						{
 							"type": "Label",
-							"caption": "Wenn sich der Status der EMA ändern soll, dann schließt K1 für zwei Sekunden."
+							"caption": "Wenn sich der Status der EMA ändern soll, dann schließt K1 für zwei Sekunden im Impuls-Modus."
 						},
 						{
 							"type": "Label",
@@ -130,7 +90,7 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie aus, ob dieser Ausgang verwendet werden soll:"
+					"caption": "\nBitte wählen Sie aus, ob dieser Ausgang verwendet werden soll:"
 				},
 				{
 					"type": "CheckBox",
@@ -139,23 +99,28 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie die Variable der Kontaktschnittstelle aus:"
+					"caption": "\nBitte wählen Sie die Variable der Kontaktschnittstelle aus:"
 				},
 				{
 					"type": "SelectVariable",
 					"name": "OutputControlEMA",
-					"caption": "Variable"
+					"caption": "Quellvariable"
+				},
+				{
+					"type": "Label",
+					"caption": "\nBitte wählen Sie die Variable für die EMA Steuerung (Unscharf / Scharf) aus:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "AlarmSystem",
+					"caption": "Zielvariable"
 				}
 			]
 		},
 		{
 			"type": "ExpansionPanel",
-			"caption": "(3) Eingänge",
+			"caption": "(2) Eingang - Rückmeldung",
 			"items": [
-				{
-					"type": "Label",
-					"caption": "(3.1) Rückmeldung"
-				},
 				{
 					"type": "ExpansionPanel",
 					"caption": "Info",
@@ -184,7 +149,7 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie aus, ob dieser Eingang verwendet werden soll:"
+					"caption": "\nBitte wählen Sie aus, ob dieser Eingang verwendet werden soll:"
 				},
 				{
 					"type": "CheckBox",
@@ -193,21 +158,28 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+					"caption": "\nBitte wählen Sie die Variable für den EMA Status (Unscharf / Scharf) aus:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "AlarmSystemStatus",
+					"caption": "Quellvariable"
+				},
+				{
+					"type": "Label",
+					"caption": "\nBitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
 				},
 				{
 					"type": "SelectVariable",
 					"name": "InputFeedback",
-					"caption": "Variable"
-				},
-				{
-					"type": "Label",
-					"caption": " "
-				},
-				{
-					"type": "Label",
-					"caption": "(3.2) Freigabe Scharfschaltbereitschaft"
-				},
+					"caption": "Zielvariable"
+				}
+			]
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "(3) Eingang - Freigabe Scharfschaltbereitschaft",
+			"items": [
 				{
 					"type": "ExpansionPanel",
 					"caption": "Info",
@@ -236,7 +208,7 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie aus, ob dieser Eingang verwendet werden soll:"
+					"caption": "\nBitte wählen Sie aus, ob dieser Eingang verwendet werden soll:"
 				},
 				{
 					"type": "CheckBox",
@@ -245,21 +217,28 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+					"caption": "\nBitte wählen Sie die Variable für den Riegelkontakt Status aus:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "BoltContactStatus",
+					"caption": "Quellvariable"
+				},
+				{
+					"type": "Label",
+					"caption": "\nBitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
 				},
 				{
 					"type": "SelectVariable",
 					"name": "InputRelease",
-					"caption": "Variable"
-				},
-				{
-					"type": "Label",
-					"caption": " "
-				},
-				{
-					"type": "Label",
-					"caption": "(3.3) Alarm"
-				},
+					"caption": "Zielvariable"
+				}
+			]
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "(4) Eingang - Alarm",
+			"items": [
 				{
 					"type": "ExpansionPanel",
 					"caption": "Info",
@@ -284,7 +263,7 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie aus, ob dieser Eingang verwendet werden soll:"
+					"caption": "\nBitte wählen Sie aus, ob dieser Eingang verwendet werden soll:"
 				},
 				{
 					"type": "CheckBox",
@@ -293,12 +272,21 @@
 				},
 				{
 					"type": "Label",
-					"caption": "Bitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
+					"caption": "\nBitte wählen Sie die Variable für den Alarmstatus (Kein Alarm / Alarm ausgelöst) aus:"
+				},
+				{
+					"type": "SelectVariable",
+					"name": "AlarmStatus",
+					"caption": "Quellvariable"
+				},
+				{
+					"type": "Label",
+					"caption": "\nBitte wählen Sie die Variable aus, um diesen Eingang des EMA-Moduls zu schalten:"
 				},
 				{
 					"type": "SelectVariable",
 					"name": "InputAlarm",
-					"caption": "Variable"
+					"caption": "Zielvariable"
 				}
 			]
 		}
@@ -310,7 +298,7 @@
 			"items": [
 				{
 					"type": "Button",
-					"caption": "Registrierte VAriablen",
+					"caption": "Registrierte Variablen",
 					"onClick": "CXEMA_ShowMessageSink($id);"
 				}
 			]

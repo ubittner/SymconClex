@@ -46,24 +46,24 @@ class ClexEMA extends IPSModule
 
         //#################### Register properties
 
-        // Status of alarm system and alarm
-        $this->RegisterPropertyInteger('AlarmSystemStatus', 0);
-        $this->RegisterPropertyInteger('AlarmStatus', 0);
-
-        // Output, toggles the alarm system
+        // Output
         $this->RegisterPropertyBoolean('UseOutputControlEMA', false);
         $this->RegisterPropertyInteger('OutputControlEMA', 0);
+        $this->RegisterPropertyInteger('AlarmSystem', 0);
 
-        // Input feedback, status of the alarm system for alarm system module
+        // Input Feedback
         $this->RegisterPropertyBoolean('UseInputFeedback', false);
+        $this->RegisterPropertyInteger('AlarmSystemStatus', 0);
         $this->RegisterPropertyInteger('InputFeedback', 0);
 
-        // Input release, release to toggle the alarm system
+        // Input Release
         $this->RegisterPropertyBoolean('UseInputRelease', false);
+        $this->RegisterPropertyInteger('BoltContactStatus', 0);
         $this->RegisterPropertyInteger('InputRelease', 0);
 
-        // Input alarm, trigger for alarm signaling at door lock
+        // Input Alarm
         $this->RegisterPropertyBoolean('UseInputAlarm', false);
+        $this->RegisterPropertyInteger('AlarmStatus', 0);
         $this->RegisterPropertyInteger('InputAlarm', 0);
 
         //#################### Register profiles
