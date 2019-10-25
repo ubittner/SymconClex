@@ -55,7 +55,7 @@ Name                    | Beschreibung
 ----------------------- | ------------------------------------------------------
 Registrierte Variablen  | Zeigt die registrierten Variablen für Statusupdates an
 
-Für den Ausgang und die Eingänge verwendeten Quell- und Zielvariablen, werden nachfolgende VAriablentypen vorausgesetzt.
+Für den Ausgang und die Eingänge verwendeten Quell- und Zielvariablen, werden nachfolgende Variablentypen vorausgesetzt.
 
 __Variablentyp__:
 
