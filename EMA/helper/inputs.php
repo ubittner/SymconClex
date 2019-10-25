@@ -10,7 +10,7 @@ trait CXEMA_inputs
      */
     public function ToggleInputFeedback()
     {
-        if ($this->ReadPropertyBoolean('UseInputFeedback')) {
+        if (!$this->ReadPropertyBoolean('UseInputFeedback')) {
             return;
         }
         $toggleState = false;

@@ -36,7 +36,7 @@ trait CXEMA_output
                     if (!$toggle) {
                         $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
                     } else {
-                        $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ' , Value: ' . var_dump($sourceVariableValue), 0);
+                        $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ' , Value: ' . $sourceVariableValue, 0);
                     }
                 }
             }
