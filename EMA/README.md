@@ -23,9 +23,11 @@ Für dieses Modul besteht kein Anspruch auf Fehlerfreiheit, Weiterentwicklung, s
 ### 2. Voraussetzungen
 
 - IP-Symcon ab Version 5.2
+- EMA
 - U&Z Clex Schließsystem
 - U&Z EMA-Modul CX6934
-- EMA
+- Kontaktschnittstelle (z.B. HmIP-SCI) 
+- Schaltaktor (z.B. HmIP-PBCS)
 
 ### 3. Software-Installation
 
