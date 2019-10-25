@@ -60,7 +60,7 @@
 		},
 		{
 			"type": "ExpansionPanel",
-			"caption": "(1) Ausgang - K1 Unscharf-/Scharf schalten",
+			"caption": "(1) Ausgang - K1 Scharf-/Unscharf schalten",
 			"items": [
 				{
 					"type": "ExpansionPanel",

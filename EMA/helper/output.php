@@ -8,7 +8,7 @@ trait CXEMA_output
     /**
      * Toggles the EMA.
      */
-    protected function ToggleEMA()
+    public function ToggleEMA()
     {
         if (!$this->ReadPropertyBoolean('UseOutput')) {
             return;
@@ -26,7 +26,7 @@ trait CXEMA_output
                 if (!$toggle) {
                     $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
                 } else {
-                    $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ' , Value: ' . var_dump($sourceVariableValue), 0);
+                    $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $sourceVariableValue, 0);
                 }
             } else {
                 // Impulse mode

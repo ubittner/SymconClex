@@ -8,29 +8,42 @@ trait CXEMA_inputs
     /**
      * Toggles the input Feedback.
      */
-    protected function ToggleInputFeedback()
+    public function ToggleInputFeedback()
     {
         if (!$this->ReadPropertyBoolean('UseInputFeedback')) {
             return;
         }
+        $toggleState = false;
         // Source variable, EMA state
         $sourceVariable = $this->ReadPropertyInteger('Input_Feedback_SourceVariable');
         if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
-            $sourceVariableValue = GetValueBoolean($sourceVariable);
+            $variableType = gettype($sourceVariable);
+            if ($variableType == 'boolean') {
+                $sourceVariableValue = GetValueBoolean($sourceVariable);
+                if ($sourceVariableValue) {
+                    $toggleState = true;
+                }
+            }
+            if ($variableType == 'integer') {
+                $sourceVariableValue = GetValueInteger($sourceVariable);
+                if ($sourceVariableValue >= 1) {
+                    $toggleState = true;
+                }
+            }
             // Target variable, actuator EMA module
             $targetVariable = $this->ReadPropertyInteger('Input_Feedback_TargetVariable');
             if ($targetVariable != 0 && IPS_ObjectExists($targetVariable)) {
-                $toggle = RequestAction($targetVariable, $sourceVariableValue);
+                $toggle = RequestAction($targetVariable, $toggleState);
                 if (!$toggle) {
                     $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
                 } else {
-                    $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ' , Value: ' . var_dump($sourceVariableValue), 0);
+                    $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $toggleState, 0);
                 }
             }
         }
     }
 
-    protected function ToggleInputRelease()
+    public function ToggleInputRelease()
     {
         // Toggle state: false = ok, true = door / window open
         $toggleState = false;
@@ -38,9 +51,18 @@ trait CXEMA_inputs
             // Source variable, bolt contact
             $sourceVariable = $this->ReadPropertyInteger('Input_Release_SourceVariable');
             if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
-                $sourceVariableValue = GetValueBoolean($sourceVariable);
-                if ($sourceVariableValue) {
-                    $toggleState = true;
+                $variableType = gettype($sourceVariable);
+                if ($variableType == 'boolean') {
+                    $sourceVariableValue = GetValueBoolean($sourceVariable);
+                    if ($sourceVariableValue) {
+                        $toggleState = true;
+                    }
+                }
+                if ($variableType == 'integer') {
+                    $sourceVariableValue = GetValueInteger($sourceVariable);
+                    if ($sourceVariableValue == 1) {
+                        $toggleState = true;
+                    }
                 }
             }
         }
@@ -51,7 +73,7 @@ trait CXEMA_inputs
             if (!$toggle) {
                 $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
             } else {
-                $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ' , Value: ' . var_dump($toggleState), 0);
+                $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $toggleState, 0);
             }
         }
     }
@@ -59,7 +81,7 @@ trait CXEMA_inputs
     /**
      * Toggles the input Alarm.
      */
-    protected function ToggleInputAlarm()
+    public function ToggleInputAlarm()
     {
         // Toggle state: false = alarm, true = no alarm
         $toggleState = true;
@@ -67,20 +89,29 @@ trait CXEMA_inputs
             // Source variable, EMA alarm state
             $sourceVariable = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
             if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
-                $sourceVariableValue = GetValue($sourceVariable);
-                if ($sourceVariableValue == 1 || $sourceVariable == 2) {
-                    $toggleState = false;
+                $variableType = gettype($sourceVariable);
+                if ($variableType == 'boolean') {
+                    $sourceVariableValue = GetValueBoolean($sourceVariable);
+                    if ($sourceVariableValue) {
+                        $toggleState = false;
+                    }
+                }
+                if ($variableType == 'integer') {
+                    $sourceVariableValue = GetValueInteger($sourceVariable);
+                    if ($sourceVariableValue == 1 || $sourceVariableValue == 2) {
+                        $toggleState = false;
+                    }
                 }
             }
         }
         // Target variable, actuator EMA module
         $targetVariable = $this->ReadPropertyInteger('Input_Alarm_TargetVariable');
         if ($targetVariable != 0 && IPS_ObjectExists($targetVariable)) {
-            $toggle = RequestAction($targetVariable, $toggleState);
+            $toggle = @RequestAction($targetVariable, $toggleState);
             if (!$toggle) {
                 $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
             } else {
-                $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ' , Value: ' . var_dump($toggleState), 0);
+                $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $toggleState, 0);
             }
         }
     }

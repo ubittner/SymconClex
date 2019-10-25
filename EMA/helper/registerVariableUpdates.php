@@ -55,10 +55,21 @@ trait CXEMA_registerVariableUpdates
     }
 
     /**
-     * Shows the registered updates.
+     * Shows the registered variable updates.
      */
     public function ShowMessageSink()
     {
-        print_r($this->GetMessageList());
+        $registeredVariableUpdates = [];
+        $registeredVariables = $this->GetMessageList();
+        foreach ($registeredVariables as $id => $registeredVariable) {
+            foreach ($registeredVariable as $messageType) {
+                if ($messageType == VM_UPDATE) {
+                    array_push($registeredVariableUpdates, ['id' => $id, 'name' => IPS_GetName($id)]);
+                }
+            }
+        }
+        sort($registeredVariableUpdates);
+        echo "\n\nRegistrierte Variablen:\n\n";
+        print_r($registeredVariableUpdates);
     }
 }

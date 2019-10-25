@@ -18,13 +18,14 @@ Für dieses Modul besteht kein Anspruch auf Fehlerfreiheit, Weiterentwicklung, s
 
 ### 1. Funktionsumfang
 
-* To be done
+* Schaltet den Ausgang und die Eingänge des EMA-Moduls.
 
 ### 2. Voraussetzungen
 
 - IP-Symcon ab Version 5.2
 - U&Z Clex Schließsystem
 - U&Z EMA-Modul CX6934
+- EMA
 
 ### 3. Software-Installation
 
@@ -40,10 +41,30 @@ An beliebiger Stelle im Objektbaum `Instanz hinzufügen` auswählen und `Clex EM
 
 __Konfigurationsseite__:
 
-Name                                | Beschreibung
------------------------------------ | ---------------------------------
-(0) Instanzinformationen            | Instanzinformationen
-(1) to de done                      | to be done
+Name                                            | Beschreibung
+----------------------------------------------- | ----------------------------------------------------------
+(0) Instanzinformationen                        | Instanzinformationen
+(1) Ausgang - K1 Scharf-/Unscharf schalten      | Schaltet die EMA Scharf/Unscharf
+(2) Eingang - Rückmeldung                       | Meldet dem EMA-Modul den Status der EMA
+(3) Eingang - Freigabe Scharfschaltbereitschaft | Überwachung Riegelkontakt
+(4) Eingang - Alarm                             | Meldet dem EMA-Modul, ob die EMA ein Alarm ausgelöst hat
+
+__Aktionsbereich__:
+
+Name                    | Beschreibung
+----------------------- | ------------------------------------------------------
+Registrierte Variablen  | Zeigt die registrierten Variablen für Statusupdates an
+
+Für den Ausgang und die Eingänge verwendeten Quell- und Zielvariablen, werden nachfolgende VAriablentypen vorausgesetzt.
+
+__Variablentyp__:
+
+Name                                            | Quellvariable     | Zielvariable
+----------------------------------------------- | ----------------- | ----------------
+(1) Ausgang - K1 Scharf-/Unscharf schalten      | boolean           | boolean
+(2) Eingang - Rückmeldung                       | boolean, integer  | boolean
+(3) Eingang - Freigabe Scharfschaltbereitschaft | boolean, integer  | boolean
+(4) Eingang - Alarm                             | boolean, integer  | boolean
 
 ### 5. Statusvariablen und Profile  
 
@@ -51,22 +72,64 @@ Die Statusvariablen / Kategorien werden automatisch angelegt. Das Löschen einze
 
 ##### Statusvariablen
 
-Name                    | Typ       | Beschreibung
------------------------ | --------- | ----------------
-To be done              | Boolean   | to be done
+Es werden keine Statusvariablen verwendet.
  
 ##### Profile:
 
-Nachfolgende Profile werden zusätzlichen hinzugefügt:
-
-To be done
-
-Wird die Instanz gelöscht, so werden automatisch die oben aufgeführten Profile gelöscht.
+Es werden keine Profile verwendet.
 
 ### 6. WebFront
 
-To be done
+Das Modul benötigt kein WebFront.
 
 ### 7. PHP-Befehlsreferenz  
 
-To be done
+```text
+Ausgang - K1 Scharf-/Unscharf schalten:  
+
+CXEMA_ToggleEMA(integer $InstanzID);    
+Schaltet die EMA.  
+
+$InstanzID:     Instanz ID des EMA-Moduls
+
+Beispiel:  
+$toggle = CXEMA_ToggleEMA(12345);
+```  
+
+```text
+Eingang - Rückmeldung:  
+
+CXEMA_ToggleInputFeedback(integer $InstanzID);    
+Meldet dem EMA-Modul den Status der EMA.
+
+$InstanzID:     Instanz ID des EMA-Moduls
+
+Beispiel:  
+$toggle = CXEMA_ToggleFeedback(12345);
+```  
+
+```text
+Eingang - Freigabe Scharfschaltbereitschaft:  
+
+CXEMA_ToggleInputRelease(integer $InstanzID);    
+Überprüft ein Riegelkontakt und erteilt die Freigabe zum Scharfschalten.
+
+$InstanzID:     Instanz ID des EMA-Moduls
+
+Beispiel:  
+$toggle = CXEMA_ToggleRelease(12345);
+```  
+
+```text
+Eingang - Alarm:  
+
+CXEMA_ToggleInputAlarm(integer $InstanzID);    
+Meldet dem EMA-Modul, ob die EMA ein Alarm ausgelöst hat
+
+$InstanzID:     Instanz ID des EMA-Moduls
+
+Beispiel:  
+$toggle = CXEMA_ToggleInputAlarm(12345);
+```
+
+

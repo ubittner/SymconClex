@@ -81,6 +81,9 @@ class ClexEMA extends IPSModule
             return;
         }
 
+        // Register variable updates
+        $this->RegisterVariableUpdates();
+
         // Check actual states
         $this->ToggleInputFeedback();
         $this->ToggleInputRelease();
