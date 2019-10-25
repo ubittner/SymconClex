@@ -109,18 +109,22 @@ class ClexEMA extends IPSModule
                     // Output
                     case $output:
                         $this->ToggleEMA();
+                        $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
                         break;
                     // Input Feedback
                     case $inputFeedback:
                         $this->ToggleInputFeedback();
+                        $this->SendDebug(__FUNCTION__, 'Input_Feedback_SourceVariable Update', 0);
                         break;
                     // Input Release
                     case $inputRelease:
                         $this->ToggleInputRelease();
+                        $this->SendDebug(__FUNCTION__, 'Input_Release_SourceVariable Update', 0);
                         break;
                     // Input Alarm
                     case $inputAlarm:
                         $this->ToggleInputAlarm();
+                        $this->SendDebug(__FUNCTION__, 'Input_Alarm_SourceVariable Update', 0);
                         break;
 
                 }
