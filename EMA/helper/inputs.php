@@ -10,25 +10,16 @@ trait CXEMA_inputs
      */
     public function ToggleInputFeedback()
     {
-        if (!$this->ReadPropertyBoolean('UseInputFeedback')) {
+        if ($this->ReadPropertyBoolean('UseInputFeedback')) {
             return;
         }
         $toggleState = false;
         // Source variable, EMA state
         $sourceVariable = $this->ReadPropertyInteger('Input_Feedback_SourceVariable');
         if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
-            $variableType = gettype($sourceVariable);
-            if ($variableType == 'boolean') {
-                $sourceVariableValue = GetValueBoolean($sourceVariable);
-                if ($sourceVariableValue) {
-                    $toggleState = true;
-                }
-            }
-            if ($variableType == 'integer') {
-                $sourceVariableValue = GetValueInteger($sourceVariable);
-                if ($sourceVariableValue >= 1) {
-                    $toggleState = true;
-                }
+            $sourceVariableValue = boolval(GetValue($sourceVariable));
+            if ($sourceVariableValue) {
+                $toggleState = true;
             }
             // Target variable, actuator EMA module
             $targetVariable = $this->ReadPropertyInteger('Input_Feedback_TargetVariable');
@@ -47,22 +38,13 @@ trait CXEMA_inputs
     {
         // Toggle state: false = ok, true = door / window open
         $toggleState = false;
-        if (!$this->ReadPropertyBoolean('UseInputRelease')) {
+        if ($this->ReadPropertyBoolean('UseInputRelease')) {
             // Source variable, bolt contact
             $sourceVariable = $this->ReadPropertyInteger('Input_Release_SourceVariable');
             if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
-                $variableType = gettype($sourceVariable);
-                if ($variableType == 'boolean') {
-                    $sourceVariableValue = GetValueBoolean($sourceVariable);
-                    if ($sourceVariableValue) {
-                        $toggleState = true;
-                    }
-                }
-                if ($variableType == 'integer') {
-                    $sourceVariableValue = GetValueInteger($sourceVariable);
-                    if ($sourceVariableValue == 1) {
-                        $toggleState = true;
-                    }
+                $sourceVariableValue = boolval(GetValue($sourceVariable));
+                if ($sourceVariableValue) {
+                    $toggleState = true;
                 }
             }
         }
@@ -85,22 +67,13 @@ trait CXEMA_inputs
     {
         // Toggle state: false = alarm, true = no alarm
         $toggleState = true;
-        if (!$this->ReadPropertyBoolean('UseInputAlarm')) {
+        if ($this->ReadPropertyBoolean('UseInputAlarm')) {
             // Source variable, EMA alarm state
             $sourceVariable = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
             if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
-                $variableType = gettype($sourceVariable);
-                if ($variableType == 'boolean') {
-                    $sourceVariableValue = GetValueBoolean($sourceVariable);
-                    if ($sourceVariableValue) {
-                        $toggleState = false;
-                    }
-                }
-                if ($variableType == 'integer') {
-                    $sourceVariableValue = GetValueInteger($sourceVariable);
-                    if ($sourceVariableValue == 1 || $sourceVariableValue == 2) {
-                        $toggleState = false;
-                    }
+                $sourceVariableValue = boolval(GetValue($sourceVariable));
+                if ($sourceVariableValue) {
+                    $toggleState = false;
                 }
             }
         }

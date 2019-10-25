@@ -16,7 +16,7 @@ trait CXEMA_output
         // Trigger
         $sourceVariable = $this->ReadPropertyInteger('Output_SourceVariable');
         if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
-            $sourceVariableValue = GetValueBoolean($sourceVariable);
+            $sourceVariableValue = boolval(GetValue($sourceVariable));
             $impulseMode = $this->ReadPropertyBoolean('UseImpulseMode');
             // EMA
             $targetVariable = $this->ReadPropertyInteger('Output_TargetVariable');
@@ -31,7 +31,7 @@ trait CXEMA_output
             } else {
                 // Impulse mode
                 if ($sourceVariableValue) {
-                    $targetVariableValue = GetValueBoolean($targetVariable);
+                    $targetVariableValue = boolval(GetValue($targetVariable));
                     $toggle = RequestAction($targetVariable, !$targetVariableValue);
                     if (!$toggle) {
                         $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
