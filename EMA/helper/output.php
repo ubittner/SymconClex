@@ -8,7 +8,7 @@ trait CXEMA_output
     /**
      * Toggles the EMA.
      */
-    public function ToggleEMA()
+    public function ToggleAlarmSystem()
     {
         if (!$this->ReadPropertyBoolean('UseOutput')) {
             return;

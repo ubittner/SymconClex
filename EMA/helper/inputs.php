@@ -14,7 +14,7 @@ trait CXEMA_inputs
             return;
         }
         $toggleState = false;
-        // Source variable, EMA state
+        // Source variable, alarm system state
         $sourceVariable = $this->ReadPropertyInteger('Input_Feedback_SourceVariable');
         if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
             $sourceVariableValue = boolval(GetValue($sourceVariable));
@@ -68,7 +68,7 @@ trait CXEMA_inputs
         // Toggle state: false = alarm, true = no alarm
         $toggleState = true;
         if ($this->ReadPropertyBoolean('UseInputAlarm')) {
-            // Source variable, EMA alarm state
+            // Source variable, alarm state of alarm system
             $sourceVariable = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
             if ($sourceVariable != 0 && IPS_ObjectExists($sourceVariable)) {
                 $sourceVariableValue = boolval(GetValue($sourceVariable));

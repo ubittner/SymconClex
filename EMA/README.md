@@ -89,7 +89,7 @@ Das Modul benötigt kein WebFront.
 ```text
 Ausgang - K1 Scharf-/Unscharf schalten:  
 
-CXEMA_ToggleEMA(integer $InstanzID);    
+CXEMA_ToggleAlarmSystem(integer $InstanzID);    
 Schaltet die EMA.  
 
 $InstanzID:     Instanz ID des EMA-Moduls

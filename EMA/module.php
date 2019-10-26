@@ -108,21 +108,23 @@ class ClexEMA extends IPSModule
                 switch ($SenderID) {
                     // Output
                     case $output:
+                        // Contact interface key lock
                         $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
-                        $this->ToggleEMA();
+                        $this->ToggleAlarmSystem();
                         break;
-                    // Input Feedback
+                    // Input
                     case $inputFeedback:
+                        // Feedback, alarm system state
                         $this->SendDebug(__FUNCTION__, 'Input_Feedback_SourceVariable Update', 0);
                         $this->ToggleInputFeedback();
                         break;
-                    // Input Release
                     case $inputRelease:
+                        // Release, bolt contact, open door / window
                         $this->SendDebug(__FUNCTION__, 'Input_Release_SourceVariable Update', 0);
                         $this->ToggleInputRelease();
                         break;
-                    // Input Alarm
                     case $inputAlarm:
+                        // Alarm, alarm state of alarm system
                         $this->SendDebug(__FUNCTION__, 'Input_Alarm_SourceVariable Update', 0);
                         $this->ToggleInputAlarm();
                         break;
