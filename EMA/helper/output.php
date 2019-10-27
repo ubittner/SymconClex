@@ -25,8 +25,6 @@ trait CXEMA_output
                 $toggle = RequestAction($targetVariable, $sourceVariableValue);
                 if (!$toggle) {
                     $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
-                } else {
-                    $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $sourceVariableValue, 0);
                 }
             } else {
                 // Impulse mode
@@ -35,8 +33,6 @@ trait CXEMA_output
                     $toggle = RequestAction($targetVariable, !$targetVariableValue);
                     if (!$toggle) {
                         $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
-                    } else {
-                        $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ' , Value: ' . $sourceVariableValue, 0);
                     }
                 }
             }

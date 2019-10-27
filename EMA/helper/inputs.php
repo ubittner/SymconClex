@@ -6,7 +6,7 @@ declare(strict_types=1);
 trait CXEMA_inputs
 {
     /**
-     * Toggles the input Feedback.
+     * Toggles the Input Feedback.
      */
     public function ToggleInputFeedback()
     {
@@ -27,13 +27,14 @@ trait CXEMA_inputs
                 $toggle = RequestAction($targetVariable, $toggleState);
                 if (!$toggle) {
                     $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
-                } else {
-                    $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $toggleState, 0);
                 }
             }
         }
     }
 
+    /**
+     * Toggles the Input Release.
+     */
     public function ToggleInputRelease()
     {
         // Toggle state: false = ok, true = door / window open
@@ -54,14 +55,12 @@ trait CXEMA_inputs
             $toggle = RequestAction($targetVariable, $toggleState);
             if (!$toggle) {
                 $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
-            } else {
-                $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $toggleState, 0);
             }
         }
     }
 
     /**
-     * Toggles the input Alarm.
+     * Toggles the Input Alarm.
      */
     public function ToggleInputAlarm()
     {
@@ -78,7 +77,13 @@ trait CXEMA_inputs
                     $execute = true;
                 }
                 if (!$sourceVariableValue) {
-                    $this->SetTimerInterval('DelayInputAlarm', 3000);
+                    $delayDuration = $this->ReadPropertyInteger('ResetAlarmDelayDuration');
+                    if ($delayDuration > 0) {
+                        $this->SetTimerInterval('ResetInputAlarm', $delayDuration * 1000);
+                    } else {
+                        $toggleState = true;
+                        $execute = true;
+                    }
                 }
             }
         }
@@ -89,26 +94,25 @@ trait CXEMA_inputs
                 $toggle = @RequestAction($targetVariable, $toggleState);
                 if (!$toggle) {
                     $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
-                } else {
-                    $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $toggleState, 0);
                 }
             }
         }
     }
 
-    public function ToggleDelayedInputAlarm()
+    /**
+     * Resets the Input Alarm.
+     */
+    public function ResetInputAlarm()
     {
-        // No alarm
-        $toggleState = true;
+        // Reset input alarm
         $targetVariable = $this->ReadPropertyInteger('Input_Alarm_TargetVariable');
         if ($targetVariable != 0 && IPS_ObjectExists($targetVariable)) {
-            $toggle = @RequestAction($targetVariable, $toggleState);
+            $toggle = @RequestAction($targetVariable, true);
             if (!$toggle) {
                 $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
-            } else {
-                $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $toggleState, 0);
             }
         }
-        $this->SetTimerInterval('DelayInputAlarm', 0);
+        // Deactivate timer
+        $this->SetTimerInterval('ResetInputAlarm', 0);
     }
 }

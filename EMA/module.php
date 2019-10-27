@@ -66,9 +66,10 @@ class ClexEMA extends IPSModule
         $this->RegisterPropertyBoolean('UseInputAlarm', false);
         $this->RegisterPropertyInteger('Input_Alarm_SourceVariable', 0);
         $this->RegisterPropertyInteger('Input_Alarm_TargetVariable', 0);
+        $this->RegisterPropertyInteger('ResetAlarmDelayDuration', 3);
 
         // Register timer
-        $this->RegisterTimer('DelayInputAlarm', 0, 'CXEMA_ToggleDelayedInputAlarm(' . $this->InstanceID . ');');
+        $this->RegisterTimer('ResetInputAlarm', 0, 'CXEMA_ResetInputAlarm(' . $this->InstanceID . ');');
     }
 
     public function ApplyChanges()
@@ -88,7 +89,7 @@ class ClexEMA extends IPSModule
         $this->RegisterVariableUpdates();
 
         // Timer
-        $this->SetTimerInterval('DelayInputAlarm', 0);
+        $this->SetTimerInterval('ResetInputAlarm', 0);
 
         // Check actual states
         $this->ToggleInputFeedback();
