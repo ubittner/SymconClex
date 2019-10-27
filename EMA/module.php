@@ -106,12 +106,6 @@ class ClexEMA extends IPSModule
                 $inputRelease = $this->ReadPropertyInteger('Input_Release_SourceVariable');
                 $inputAlarm = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
                 switch ($SenderID) {
-                    // Output
-                    case $output:
-                        // Contact interface key lock
-                        $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
-                        $this->ToggleAlarmSystem();
-                        break;
                     // Input
                     case $inputFeedback:
                         // Feedback, alarm system state
@@ -128,7 +122,12 @@ class ClexEMA extends IPSModule
                         $this->SendDebug(__FUNCTION__, 'Input_Alarm_SourceVariable Update', 0);
                         $this->ToggleInputAlarm();
                         break;
-
+                    // Output
+                    case $output:
+                        // Contact interface key lock
+                        $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
+                        $this->ToggleAlarmSystem();
+                        break;
                 }
                 break;
         }
