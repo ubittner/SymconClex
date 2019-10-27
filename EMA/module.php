@@ -68,7 +68,7 @@ class ClexEMA extends IPSModule
         $this->RegisterPropertyInteger('Input_Alarm_TargetVariable', 0);
 
         // Register timer
-        $this->RegisterTimer('DelayInputAlarm', 0, 'CXEMA_ToggleDelayedInput(' . $this->InstanceID . ');');
+        $this->RegisterTimer('DelayInputAlarm', 0, 'CXEMA_ToggleDelayedInputAlarm(' . $this->InstanceID . ');');
     }
 
     public function ApplyChanges()
