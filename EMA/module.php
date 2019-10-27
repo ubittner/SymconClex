@@ -87,13 +87,13 @@ class ClexEMA extends IPSModule
         // Register variable updates
         $this->RegisterVariableUpdates();
 
+        // Timer
+        $this->SetTimerInterval('DelayInputAlarm', 0);
+
         // Check actual states
         $this->ToggleInputFeedback();
         $this->ToggleInputRelease();
         $this->ToggleInputAlarm();
-
-        // Timer
-        $this->SetTimerInterval('DelayInputAlarm', 0);
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
