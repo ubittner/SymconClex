@@ -59,14 +59,16 @@ Registrierte Variablen  | Zeigt die registrierten Variablen für Statusupdates a
 
 Für den Ausgang und die Eingänge verwendeten Quell- und Zielvariablen, werden nachfolgende Variablentypen vorausgesetzt.
 
-__Variablentyp__:
+__Quellvariable (Variablentyp)__:
 
-Name                                            | Quellvariable     | Zielvariable
+Nimmt die Quellvariable einen Wert an, der nicht neutral ist (false bei Boolean, 0 bei Integer und Float, '' bei String), wird die Zielvariable auf true gesetzt.
+
+Quellvariable                                   | false             | true
 ----------------------------------------------- | ----------------- | ----------------
-(1) Ausgang - K1 Scharf-/Unscharf schalten      | boolean           | boolean
-(2) Eingang - Rückmeldung                       | boolean, integer  | boolean
-(3) Eingang - Freigabe Scharfschaltbereitschaft | boolean, integer  | boolean
-(4) Eingang - Alarm                             | boolean, integer  | boolean
+(1) Ausgang - K1 Scharf-/Unscharf schalten      | EMA unscharf      | EMA scharf
+(2) Eingang - Rückmeldung                       | EMA unscharf      | EMA scharf
+(3) Eingang - Freigabe Scharfschaltbereitschaft | Keine Freigabe    | Freigabe
+(4) Eingang - Alarm                             | Kein Alarm        | Alarm
 
 ### 5. Statusvariablen und Profile  
 
