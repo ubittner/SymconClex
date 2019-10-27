@@ -66,6 +66,9 @@ class ClexEMA extends IPSModule
         $this->RegisterPropertyBoolean('UseInputAlarm', false);
         $this->RegisterPropertyInteger('Input_Alarm_SourceVariable', 0);
         $this->RegisterPropertyInteger('Input_Alarm_TargetVariable', 0);
+
+        // Register timer
+        $this->RegisterTimer('DelayInputAlarm', 0, 'CXEMA_ToggleDelayedInput(' . $this->InstanceID . ');');
     }
 
     public function ApplyChanges()
@@ -88,6 +91,9 @@ class ClexEMA extends IPSModule
         $this->ToggleInputFeedback();
         $this->ToggleInputRelease();
         $this->ToggleInputAlarm();
+
+        // Timer
+        $this->SetTimerInterval('DelayInputAlarm', 0);
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
@@ -106,6 +112,12 @@ class ClexEMA extends IPSModule
                 $inputRelease = $this->ReadPropertyInteger('Input_Release_SourceVariable');
                 $inputAlarm = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
                 switch ($SenderID) {
+                    // Output
+                    case $output:
+                        // Contact interface key lock
+                        $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
+                        $this->ToggleAlarmSystem();
+                        break;
                     // Input
                     case $inputFeedback:
                         // Feedback, alarm system state
@@ -121,12 +133,6 @@ class ClexEMA extends IPSModule
                         // Alarm, alarm state of alarm system
                         $this->SendDebug(__FUNCTION__, 'Input_Alarm_SourceVariable Update', 0);
                         $this->ToggleInputAlarm();
-                        break;
-                    // Output
-                    case $output:
-                        // Contact interface key lock
-                        $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
-                        $this->ToggleAlarmSystem();
                         break;
                 }
                 break;

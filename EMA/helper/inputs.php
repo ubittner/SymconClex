@@ -67,6 +67,7 @@ trait CXEMA_inputs
     {
         // Toggle state: false = alarm, true = no alarm
         $toggleState = true;
+        $execute = false;
         if ($this->ReadPropertyBoolean('UseInputAlarm')) {
             // Source variable, alarm state of alarm system
             $sourceVariable = $this->ReadPropertyInteger('Input_Alarm_SourceVariable');
@@ -74,10 +75,31 @@ trait CXEMA_inputs
                 $sourceVariableValue = boolval(GetValue($sourceVariable));
                 if ($sourceVariableValue) {
                     $toggleState = false;
+                    $execute = true;
+                }
+                if (!$sourceVariableValue) {
+                    $this->SetTimerInterval('DelayInputAlarm', 3000);
                 }
             }
         }
-        // Target variable, actuator EMA module
+        if ($execute) {
+            // Target variable, actuator EMA module
+            $targetVariable = $this->ReadPropertyInteger('Input_Alarm_TargetVariable');
+            if ($targetVariable != 0 && IPS_ObjectExists($targetVariable)) {
+                $toggle = @RequestAction($targetVariable, $toggleState);
+                if (!$toggle) {
+                    $this->SendDebug(__FUNCTION__, 'Error, could not toggle target variable.', 0);
+                } else {
+                    $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $toggleState, 0);
+                }
+            }
+        }
+    }
+
+    public function ToggleDelayedInputAlarm()
+    {
+        // No alarm
+        $toggleState = true;
         $targetVariable = $this->ReadPropertyInteger('Input_Alarm_TargetVariable');
         if ($targetVariable != 0 && IPS_ObjectExists($targetVariable)) {
             $toggle = @RequestAction($targetVariable, $toggleState);
@@ -87,5 +109,6 @@ trait CXEMA_inputs
                 $this->SendDebug(__FUNCTION__, 'Target Variable: ' . $targetVariable . ', Value: ' . $toggleState, 0);
             }
         }
+        $this->SetTimerInterval('DelayInputAlarm', 0);
     }
 }
