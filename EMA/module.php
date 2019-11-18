@@ -116,8 +116,10 @@ class ClexEMA extends IPSModule
                     // Output
                     case $output:
                         // Contact interface key lock
-                        $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
-                        $this->ToggleAlarmSystem();
+                        if ($Data[1]) {
+                            $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
+                            $this->ToggleAlarmSystem();
+                        }
                         break;
                     // Input
                     case $inputFeedback:
