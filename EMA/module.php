@@ -100,6 +100,9 @@ class ClexEMA extends IPSModule
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
     {
         // Send debug
+        // $Data[0] = actual value
+        // $Data[1] = value changed
+        // $Data[2] = last value
         $this->SendDebug('MessageSink', 'Message from SenderID ' . $SenderID . ' with Message ' . $Message . "\r\n Data: " . print_r($Data, true), 0);
         switch ($Message) {
             case IPS_KERNELSTARTED:
@@ -108,6 +111,7 @@ class ClexEMA extends IPSModule
             case VM_UPDATE:
                 // Output
                 $output = $this->ReadPropertyInteger('Output_SourceVariable');
+                $useImpulseMode = $this->ReadPropertyBoolean('UseImpulseMode');
                 // Input
                 $inputFeedback = $this->ReadPropertyInteger('Input_Feedback_SourceVariable');
                 $inputRelease = $this->ReadPropertyInteger('Input_Release_SourceVariable');
@@ -115,10 +119,17 @@ class ClexEMA extends IPSModule
                 switch ($SenderID) {
                     // Output
                     case $output:
-                        // Contact interface key lock
-                        if ($Data[1]) {
-                            $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
-                            $this->ToggleAlarmSystem();
+                        if ($useImpulseMode) {
+                            if ($Data[0] && $Data[1]) {
+                                $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
+                                $this->ToggleAlarmSystem();
+                            }
+                        } else {
+                            // Contact interface key lock
+                            if ($Data[1]) {
+                                $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
+                                $this->ToggleAlarmSystem();
+                            }
                         }
                         break;
                     // Input
