@@ -121,7 +121,7 @@ class ClexEMA extends IPSModule
                     case $output:
                         // Contact interface key lock, toggles the alarm system
                         if ($useImpulseMode) {
-                            if ($Data[0] && $Data[1]) {
+                            if (!$Data[0] && $Data[1]) {
                                 $this->SendDebug(__FUNCTION__, 'Output_SourceVariable Update', 0);
                                 $this->ToggleAlarmSystem();
                             }
