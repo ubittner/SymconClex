@@ -28,7 +28,7 @@ trait CXEMA_output
                 }
             } else {
                 // Impulse mode
-                if ($sourceVariableValue) {
+                if (!$sourceVariableValue) {
                     $targetVariableValue = boolval(GetValue($targetVariable));
                     $toggle = RequestAction($targetVariable, !$targetVariableValue);
                     if (!$toggle) {
